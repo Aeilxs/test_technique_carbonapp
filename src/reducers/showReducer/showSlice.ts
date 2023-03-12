@@ -18,6 +18,12 @@ export interface ShowData {
   name: string;
   image: string;
   summary: string;
+  language: string;
+  genres: string[];
+  status: string;
+  premiered: string;
+  ended: string;
+  officialSite: string;
 }
 
 const initialState: ShowState = {
