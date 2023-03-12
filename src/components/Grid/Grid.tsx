@@ -1,15 +1,28 @@
 import { Box } from '@mui/system';
-import ShowCard from '../Card/Card';
+import { selectShows, ShowData } from '../../reducers/showReducer/showSlice';
 import { useAppSelector } from '../../store/hooks';
-import { selectShows } from '../../reducers/showReducer/showSlice';
+import { removeHTMLTags } from '../../utils/removeHTMLTags';
+import ShowCard from '../Card/ShowCard';
 
 export default function Grid() {
   const shows = useAppSelector(selectShows);
-  console.log(shows);
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-      {shows.map((show: any) => (
-        <ShowCard imgSrc={show.show.image.medium} />
+    <Box
+      sx={{
+        display: ['flex', 'flex', 'grid'],
+        flexDirection: 'column',
+        gap: 3,
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        py: 2,
+      }}
+    >
+      {shows.map((show: ShowData) => (
+        <ShowCard
+          key={show.id}
+          title={show.name}
+          content={removeHTMLTags(show.summary)}
+          imgSrc={show.image}
+        />
       ))}
     </Box>
   );

@@ -12,10 +12,7 @@ export default function Nav() {
   const theme = useAppSelector(selectTheme);
   const dispatch = useAppDispatch();
   return (
-    <AppBar
-      position="static"
-      sx={{ mb: 5 }}
-    >
+    <AppBar position="static">
       <Toolbar sx={{ display: 'flex' }}>
         <TvIcon sx={{ mr: 2 }} />
         <Typography
