@@ -12,13 +12,19 @@ export const searchShows = createAsyncThunk('show/searchShow', async (_, { getSt
     if (response.data.length === 0) {
       return { severity: 'warning', message: `Sadly there is no show that match your research, try again :(` };
     }
-    console.log(response.data[0]);
     const filteredData = response.data.map((show: any) => ({
       id: show.show.id,
       name: show.show.name,
       image: show.show.image?.original || 'https://cdn-icons-png.flaticon.com/512/3875/3875172.png',
       summary: show.show.summary || 'No summary available',
+      language: show.show.language || '',
+      genres: show.show.genres || [''],
+      status: show.show.status || '',
+      premiered: show.show.premiered || '',
+      ended: show.show.ended || '',
+      officialSite: show.show.officialSite || '',
     }));
+    console.log(response.data);
 
     dispatch(setShows(filteredData));
     return { severity: 'success', message: `Here are the shows you asked for !` };

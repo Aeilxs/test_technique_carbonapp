@@ -7,20 +7,29 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectTheme, toggleTheme } from '../../reducers/uiReducer/uiSlice';
+import { Box } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
 
 export default function Nav() {
   const theme = useAppSelector(selectTheme);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   return (
     <AppBar position="static">
       <Toolbar sx={{ display: 'flex' }}>
-        <TvIcon sx={{ mr: 2 }} />
-        <Typography
-          variant="h6"
-          component="div"
+        <Box
+          component="h4"
+          onClick={() => navigate('/')}
+          sx={{ display: 'flex', cursor: 'pointer' }}
         >
-          TV Maze
-        </Typography>
+          <TvIcon sx={{ mr: 2 }} />
+          <Typography
+            variant="h6"
+            component="div"
+          >
+            TV Maze
+          </Typography>
+        </Box>
         <IconButton
           onClick={() => {
             dispatch(toggleTheme(theme === 'dark' ? 'light' : 'dark'));

@@ -19,6 +19,7 @@ export default function Grid() {
       {shows.map((show: ShowData) => (
         <ShowCard
           key={show.id}
+          id={show.id}
           title={show.name}
           content={removeHTMLTags(show.summary)}
           imgSrc={show.image}

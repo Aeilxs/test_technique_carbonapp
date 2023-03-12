@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface ShowCardProps {
+  id: number;
   imgSrc: string;
   title: string;
   content: string;
 }
 
-export default function ShowCard({ imgSrc, title, content }: ShowCardProps) {
+export default function ShowCard({ id, imgSrc, title, content }: ShowCardProps) {
   const [elevation, setElevation] = useState(2);
   const navigate = useNavigate();
   return (
@@ -53,7 +54,7 @@ export default function ShowCard({ imgSrc, title, content }: ShowCardProps) {
           <Button
             sx={{ mr: 1 }}
             variant="contained"
-            onClick={() => navigate('/show/1')}
+            onClick={() => navigate(`/show/${id}`)}
           >
             More details
           </Button>
