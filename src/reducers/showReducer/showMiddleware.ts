@@ -24,6 +24,7 @@ export const searchShows = createAsyncThunk('show/searchShow', async (_, { getSt
       ended: show.show.ended || '',
       officialSite: show.show.officialSite || '',
     }));
+    console.log(response.data);
 
     dispatch(setShows(filteredData));
     return { severity: 'success', message: `Here are the shows you asked for !` };
